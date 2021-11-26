@@ -57,7 +57,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
-     // return $request->all();
+    //   return $request->all();
         DB::transaction(function () use($request) {
             
       
@@ -98,7 +98,7 @@ class OrderController extends Controller
         $transaction->transaction_date=date('Y-m-d');
          $transaction->save();
 
-
+         Cart::where('user_id',auth()->user()->id)->delete();
           //last order history
 
         $products=Product::all();
